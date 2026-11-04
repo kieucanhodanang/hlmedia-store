@@ -1,0 +1,157 @@
+
+---
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'vi' | 'lo';
+}
+
+const {
+  title = 'H&L Media Academy',
+  description = 'Đào tạo Facebook Ads và TikTok Ads thực chiến',
+  lang = 'vi'
+} = Astro.props;
+
+const isVi = lang === 'vi';
+const homeUrl = `/${lang}/`;
+
+const menu = isVi
+  ? [
+      { name: 'Trang chủ', url: homeUrl },
+      { name: 'Facebook Ads', url: `/${lang}/facebook-ads/` },
+      { name: 'TikTok Ads', url: `/${lang}/tiktok-ads/` },
+      { name: 'Combo', url: `/${lang}/combo/` },
+      { name: 'Kiến thức', url: `/${lang}/kien-thuc/` },
+      { name: 'Liên hệ', url: `/${lang}/lien-he/` }
+    ]
+  : [
+      { name: 'ໜ້າຫຼັກ', url: homeUrl },
+      { name: 'Facebook Ads', url: `/${lang}/facebook-ads/` },
+      { name: 'TikTok Ads', url: `/${lang}/tiktok-ads/` },
+      { name: 'ຫຼັກສູດ Combo', url: `/${lang}/combo/` },
+      { name: 'ຄວາມຮູ້', url: `/${lang}/kien-thuc/` },
+      { name: 'ຕິດຕໍ່', url: `/${lang}/lien-he/` }
+    ];
+
+const pathname = Astro.url.pathname;
+const otherLang = isVi ? 'lo' : 'vi';
+const otherPath = pathname.replace(/^\/(vi|lo)(?=\/|$)/, `/${otherLang}`);
+const switchUrl = otherPath === pathname ? `/${otherLang}/` : otherPath;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="alternate" hreflang="vi" href={new URL(pathname.replace(/^\/(vi|lo)/, '/vi'), Astro.site)} />
+    <link rel="alternate" hreflang="lo" href={new URL(pathname.replace(/^\/(vi|lo)/, '/lo'), Astro.site)} />
+    <title>{title}</title>
+    <style>
+      :global(*) { box-sizing: border-box; }
+      :global(body) {
+        margin: 0;
+        font-family: Arial, "Noto Sans Lao", sans-serif;
+        color: #14213d;
+        background: #fff;
+      }
+      :global(a) { text-decoration: none; color: inherit; }
+      .header {
+        background: #fff;
+        border-bottom: 1px solid #e5eaf2;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav {
+        max-width: 1200px;
+        margin: auto;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .logo {
+        font-size: 21px;
+        font-weight: 800;
+        color: #1263df;
+      }
+      .links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .links a { font-size: 14px; font-weight: 600; }
+      .links a:hover { color: #1263df; }
+      .language {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .language a {
+        padding: 7px 10px;
+        border-radius: 7px;
+        border: 1px solid #dce4ef;
+        font-size: 13px;
+      }
+      .language .active {
+        background: #1263df;
+        color: white;
+        border-color: #1263df;
+      }
+      .footer {
+        background: #0e1b34;
+        color: white;
+        padding: 36px 20px;
+        text-align: center;
+        margin-top: 60px;
+      }
+      @media (max-width: 900px) {
+        .nav { flex-wrap: wrap; }
+        .links {
+          order: 3;
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 6px;
+        }
+        .links a { white-space: nowrap; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="logo" href={homeUrl}>H&L MEDIA ACADEMY</a>
+
+        <div class="links">
+          {menu.map(item => (
+            <a href={item.url}>{item.name}</a>
+          ))}
+        </div>
+
+        <div class="language">
+          <a href={isVi ? pathname : switchUrl} class:list={{ active: isVi }} lang="vi">🇻🇳 VI</a>
+          <a href={isVi ? switchUrl : pathname} class:list={{ active: !isVi }} lang="lo">🇱🇦 LAO</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <strong>H&L Media Academy</strong>
+      <p>
+        {isVi
+          ? 'Đào tạo Facebook Ads & TikTok Ads thực chiến'
+          : 'ຝຶກອົບຮົມ Facebook Ads ແລະ TikTok Ads'}
+      </p>
+      <small>© {new Date().getFullYear()} H&L Media Academy</small>
+    </footer>
+  </body>
+</html>
