@@ -43,6 +43,11 @@ const switchUrl = otherPath === pathname ? `/${otherLang}/` : otherPath;
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+Lao:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
@@ -52,12 +57,31 @@ const switchUrl = otherPath === pathname ? `/${otherLang}/` : otherPath;
     <title>{title}</title>
     <style>
       :global(*) { box-sizing: border-box; }
-      :global(body) {
-        margin: 0;
-        font-family: Arial, "Noto Sans Lao", sans-serif;
-        color: #14213d;
-        background: #fff;
-      }
+     
+:global(body) {
+  margin: 0;
+  font-family: "Be Vietnam Pro", "Noto Sans Lao", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #14213d;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+:global(html[lang="lo"] body) {
+  font-family: "Noto Sans Lao", sans-serif;
+}
+
+:global(h1),
+:global(h2),
+:global(h3),
+:global(h4),
+:global(p),
+:global(a),
+:global(button) {
+  font-family: inherit;
+}
+
       :global(a) { text-decoration: none; color: inherit; }
       .header {
         background: #fff;
