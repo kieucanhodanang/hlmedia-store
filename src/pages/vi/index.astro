@@ -1,0 +1,526 @@
+
+---
+import Base from '../../layouts/Base.astro';
+
+const courses = [
+  {
+    number: '01',
+    title: 'Facebook Ads',
+    description: 'Học cách xây dựng chiến dịch, xác định khách hàng mục tiêu, tối ưu ngân sách và đo lường hiệu quả quảng cáo.',
+    url: '/vi/facebook-ads/',
+    label: 'Khám phá khóa học'
+  },
+  {
+    number: '02',
+    title: 'TikTok Ads',
+    description: 'Thực hành thiết lập quảng cáo TikTok, xây dựng nội dung, phân tích chỉ số và tối ưu chiến dịch bán hàng.',
+    url: '/vi/tiktok-ads/',
+    label: 'Khám phá khóa học'
+  },
+  {
+    number: '03',
+    title: 'Combo Facebook + TikTok',
+    description: 'Lộ trình kết hợp hai nền tảng, giúp học viên triển khai quảng cáo đa kênh cho hoạt động kinh doanh.',
+    url: '/vi/combo/',
+    label: 'Khám phá khóa học'
+  }
+];
+
+const benefits = [
+  'Học từ nền tảng đến thực hành',
+  'Thực hành thiết lập chiến dịch quảng cáo',
+  'Hướng dẫn phân tích và tối ưu ngân sách',
+  'Ứng dụng vào sản phẩm và dịch vụ thực tế',
+  'Hỗ trợ giải đáp trong quá trình học',
+  'Phù hợp với người mới và chủ shop online'
+];
+---
+
+<Base
+  lang="vi"
+  title="H&L Media Academy | Khóa học Facebook Ads và TikTok Ads"
+  description="Khóa học chạy quảng cáo Facebook Ads và TikTok Ads thực chiến tại H&L Media Academy. Đào tạo từ cơ bản đến nâng cao, hướng dẫn thực hành và tối ưu quảng cáo."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">H&L MEDIA ACADEMY</span>
+        <h1>
+          Làm chủ quảng cáo
+          <span>Facebook Ads & TikTok Ads</span>
+        </h1>
+        <p>
+          Học chạy quảng cáo từ cơ bản đến nâng cao.
+          Thực hành xây dựng chiến dịch, quản lý ngân sách
+          và tối ưu hiệu quả quảng cáo cho công việc kinh doanh.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="#khoa-hoc">
+            Khám phá khóa học
+          </a>
+          <a class="btn secondary" href="#dang-ky">
+            Đăng ký tư vấn
+          </a>
+        </div>
+
+        <div class="hero-tags">
+          <span>✓ Học thực chiến</span>
+          <span>✓ Hướng dẫn từng bước</span>
+          <span>✓ Việt Nam & Lào</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-label">DIGITAL ADS TRAINING</div>
+        <div class="visual-title">
+          Nâng cao kỹ năng<br />
+          quảng cáo số
+        </div>
+        <div class="platforms">
+          <div class="platform facebook">
+            <strong>f</strong>
+            <span>Facebook Ads</span>
+          </div>
+          <div class="platform tiktok">
+            <strong>♪</strong>
+            <span>TikTok Ads</span>
+          </div>
+        </div>
+        <div class="visual-bottom">
+          LEARN · PRACTICE · OPTIMIZE
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="khoa-hoc">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">CHƯƠNG TRÌNH ĐÀO TẠO</span>
+        <h2>Chọn khóa học phù hợp với bạn</h2>
+        <p>
+          Lộ trình học tập tập trung vào kiến thức có thể
+          áp dụng trong hoạt động quảng cáo thực tế.
+        </p>
+      </div>
+
+      <div class="course-grid">
+        {courses.map(course => (
+          <article class="course-card">
+            <div class="course-number">{course.number}</div>
+            <h3>{course.title}</h3>
+            <p>{course.description}</p>
+            <a href={course.url}>{course.label} →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefits-section" id="loi-ich">
+    <div class="container benefits-grid">
+      <div>
+        <span class="eyebrow">HỌC ĐỂ ỨNG DỤNG</span>
+        <h2>Tại sao nên học tại H&L Media Academy?</h2>
+        <p class="muted">
+          Chương trình được xây dựng theo hướng thực hành,
+          giúp học viên hiểu cách triển khai quảng cáo
+          và chủ động cải thiện hiệu quả chiến dịch.
+        </p>
+      </div>
+
+      <div class="benefit-list">
+        {benefits.map(benefit => (
+          <div class="benefit-item">
+            <span class="check">✓</span>
+            <span>{benefit}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">LỘ TRÌNH HỌC TẬP</span>
+        <h2>Học từng bước, thực hành từng bước</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span>01</span>
+          <h3>Nắm vững nền tảng</h3>
+          <p>Hiểu tài khoản quảng cáo, mục tiêu và cấu trúc chiến dịch.</p>
+        </div>
+        <div class="step">
+          <span>02</span>
+          <h3>Triển khai thực tế</h3>
+          <p>Thực hành tạo quảng cáo, nội dung và lựa chọn đối tượng.</p>
+        </div>
+        <div class="step">
+          <span>03</span>
+          <h3>Phân tích & tối ưu</h3>
+          <p>Đọc chỉ số, kiểm soát chi phí và cải thiện chiến dịch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="dang-ky">
+    <div class="container cta-inner">
+      <span class="eyebrow">BẮT ĐẦU HỌC NGAY</span>
+      <h2>Sẵn sàng nâng cao kỹ năng quảng cáo?</h2>
+      <p>
+        Khám phá chương trình Facebook Ads và TikTok Ads
+        phù hợp với mục tiêu của bạn.
+      </p>
+      <a class="btn cta-button" href="/vi/lien-he/">
+        Đăng ký tư vấn khóa học →
+      </a>
+    </div>
+  </section>
+
+  <style>
+    .container {
+      width: min(1160px, 92%);
+      margin: auto;
+    }
+
+    .hero {
+      background: linear-gradient(125deg, #071b3e, #104c9b);
+      color: white;
+      padding: 100px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #48c8ff;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.13;
+      margin: 0 0 24px;
+      letter-spacing: -1.5px;
+    }
+
+    h1 span {
+      display: block;
+      color: #52d6ff;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: #d5e5fa;
+      max-width: 610px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 23px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: #23b9ff;
+      color: #071b3e;
+    }
+
+    .secondary {
+      border: 1px solid #8db7e5;
+      color: white;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 35px;
+      font-size: 13px;
+      color: #d7eaff;
+    }
+
+    .hero-visual {
+      min-height: 360px;
+      border: 1px solid #5286c5;
+      border-radius: 24px;
+      padding: 35px;
+      background: linear-gradient(145deg, #174c91, #071c3f);
+      box-shadow: 0 30px 70px #00152e70;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .visual-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #8ee5ff;
+    }
+
+    .visual-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      line-height: 1.3;
+      margin: 25px 0;
+    }
+
+    .platforms {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .platform {
+      background: #ffffff12;
+      border: 1px solid #ffffff35;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .platform strong {
+      font-size: 32px;
+      color: #54d9ff;
+    }
+
+    .platform span {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .visual-bottom {
+      margin-top: 30px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #9cbce2;
+    }
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading .eyebrow,
+    .benefits-section .eyebrow {
+      color: #1263df;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.25;
+      margin: 0 0 18px;
+    }
+
+    .section-heading p,
+    .muted {
+      color: #63748b;
+      line-height: 1.8;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .course-card {
+      padding: 32px;
+      border: 1px solid #e0e8f3;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px #123b6b0a;
+      background: white;
+    }
+
+    .course-number {
+      color: #1263df;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 35px;
+    }
+
+    .course-card h3 {
+      font-size: 22px;
+      margin: 0 0 15px;
+    }
+
+    .course-card p {
+      color: #63748b;
+      line-height: 1.8;
+      min-height: 145px;
+    }
+
+    .course-card a {
+      color: #1263df;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .benefits-section {
+      background: #f1f6fd;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .benefit-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .benefit-item {
+      background: white;
+      border-radius: 12px;
+      padding: 17px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-weight: 600;
+    }
+
+    .check {
+      display: inline-grid;
+      place-items: center;
+      background: #e2f3ff;
+      color: #0877d7;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .step {
+      padding: 28px;
+      border-left: 3px solid #1263df;
+      background: #f8fbff;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .step > span {
+      font-size: 30px;
+      font-weight: 800;
+      color: #1263df;
+    }
+
+    .step h3 {
+      font-size: 20px;
+    }
+
+    .step p {
+      color: #63748b;
+      line-height: 1.7;
+    }
+
+    .cta-section {
+      background: #0c2854;
+      color: white;
+      text-align: center;
+      padding: 85px 0;
+    }
+
+    .cta-inner {
+      max-width: 780px;
+    }
+
+    .cta-inner p {
+      color: #d5e5fa;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .cta-button {
+      background: #28c2ff;
+      color: #092144;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .course-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .course-card p {
+        min-height: auto;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .hero-visual {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .platforms {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-tags {
+        gap: 12px;
+      }
+
+      .hero-visual {
+        padding: 24px;
+      }
+    }
+  </style>
+</Base>
