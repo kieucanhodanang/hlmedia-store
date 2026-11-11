@@ -1,4 +1,3 @@
-
 ---
 interface Props {
   title?: string;
@@ -14,7 +13,6 @@ const {
 
 const isVi = lang === 'vi';
 const homeUrl = `/${lang}/`;
-
 const menu = isVi
   ? [
       { name: 'Trang chủ', url: homeUrl },
@@ -37,145 +35,127 @@ const pathname = Astro.url.pathname;
 const otherLang = isVi ? 'lo' : 'vi';
 const otherPath = pathname.replace(/^\/(vi|lo)(?=\/|$)/, `/${otherLang}`);
 const switchUrl = otherPath === pathname ? `/${otherLang}/` : otherPath;
+const alternateVi = pathname.replace(/^\/(vi|lo)(?=\/|$)/, '/vi');
+const alternateLo = pathname.replace(/^\/(vi|lo)(?=\/|$)/, '/lo');
+
+const contact = {
+  email: 'vucnc110@gmail.com',
+  vietnam: '+84966064236',
+  laos: '+8562099602210',
+  vietnamDisplay: '+84 966 064 236',
+  laosDisplay: '+856 20 9960 2210',
+  zalo: 'https://zalo.me/84966064236',
+  whatsappVietnam: 'https://wa.me/84966064236',
+  whatsappLaos: 'https://wa.me/8562099602210'
+};
+const primaryPhone = isVi ? contact.vietnam : contact.laos;
+const primaryWhatsapp = isVi ? contact.whatsappVietnam : contact.whatsappLaos;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+Lao:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+Lao:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    <link rel="alternate" hreflang="vi" href={new URL(pathname.replace(/^\/(vi|lo)/, '/vi'), Astro.site)} />
-    <link rel="alternate" hreflang="lo" href={new URL(pathname.replace(/^\/(vi|lo)/, '/lo'), Astro.site)} />
+    <link rel="alternate" hreflang="vi" href={new URL(alternateVi, Astro.site)} />
+    <link rel="alternate" hreflang="lo" href={new URL(alternateLo, Astro.site)} />
     <title>{title}</title>
     <style>
       :global(*) { box-sizing: border-box; }
-     
-:global(body) {
-  margin: 0;
-  font-family: "Be Vietnam Pro", "Noto Sans Lao", sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #14213d;
-  background: #ffffff;
-  -webkit-font-smoothing: antialiased;
-}
-
-:global(html[lang="lo"] body) {
-  font-family: "Noto Sans Lao", sans-serif;
-}
-
-:global(h1),
-:global(h2),
-:global(h3),
-:global(h4),
-:global(p),
-:global(a),
-:global(button) {
-  font-family: inherit;
-}
-
+      :global(body) {
+        margin: 0;
+        font-family: "Be Vietnam Pro", "Noto Sans Lao", sans-serif;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #14213d;
+        background: #ffffff;
+        -webkit-font-smoothing: antialiased;
+      }
+      :global(html[lang="lo"] body) { font-family: "Noto Sans Lao", sans-serif; }
+      :global(h1), :global(h2), :global(h3), :global(h4), :global(p), :global(a), :global(button) { font-family: inherit; }
       :global(a) { text-decoration: none; color: inherit; }
-      .header {
-        background: #fff;
-        border-bottom: 1px solid #e5eaf2;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      .nav {
-        max-width: 1200px;
-        margin: auto;
-        padding: 16px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-      }
-      .logo {
-        font-size: 21px;
-        font-weight: 800;
-        color: #1263df;
-      }
-      .links {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
+      .header { background: #fff; border-bottom: 1px solid #e5eaf2; position: sticky; top: 0; z-index: 100; }
+      .nav { max-width: 1200px; margin: auto; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .logo { font-size: 21px; font-weight: 800; color: #1263df; }
+      .links { display: flex; align-items: center; gap: 20px; }
       .links a { font-size: 14px; font-weight: 600; }
       .links a:hover { color: #1263df; }
-      .language {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-      .language a {
-        padding: 7px 10px;
-        border-radius: 7px;
-        border: 1px solid #dce4ef;
-        font-size: 13px;
-      }
-      .language .active {
-        background: #1263df;
-        color: white;
-        border-color: #1263df;
-      }
-      .footer {
-        background: #0e1b34;
-        color: white;
-        padding: 36px 20px;
-        text-align: center;
-        margin-top: 60px;
-      }
+      .language { display: flex; gap: 8px; align-items: center; }
+      .language a { padding: 7px 10px; border-radius: 7px; border: 1px solid #dce4ef; font-size: 13px; }
+      .language .active { background: #1263df; color: white; border-color: #1263df; }
+      .footer { background: #0e1b34; color: white; padding: 45px 20px 30px; margin-top: 60px; }
+      .footer-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+      .footer-brand { font-size: 20px; }
+      .footer p { color: #cbd8e9; }
+      .contact-title { font-size: 17px; font-weight: 700; margin: 0 0 12px; }
+      .contact-list { display: grid; gap: 9px; }
+      .contact-list a { color: #e1edff; overflow-wrap: anywhere; }
+      .contact-list a:hover { color: #69d3ff; text-decoration: underline; }
+      .contact-label { color: #aebfd6; }
+      .footer-bottom { max-width: 1200px; margin: 30px auto 0; padding-top: 20px; border-top: 1px solid #ffffff26; color: #b8c7dd; font-size: 12px; }
+      .quick-contact { position: fixed; right: 18px; bottom: 20px; display: flex; flex-direction: column; gap: 9px; z-index: 90; }
+      .quick-contact a { display: flex; align-items: center; justify-content: center; min-width: 110px; padding: 10px 13px; border-radius: 24px; color: white; font-weight: 700; font-size: 12px; box-shadow: 0 5px 20px #001b3b36; }
+      .quick-contact .call { background: #1263df; }
+      .quick-contact .zalo { background: #086ac9; }
+      .quick-contact .whatsapp { background: #168b51; }
+      .quick-contact a:hover { filter: brightness(1.1); }
       @media (max-width: 900px) {
         .nav { flex-wrap: wrap; }
-        .links {
-          order: 3;
-          width: 100%;
-          overflow-x: auto;
-          padding-bottom: 6px;
-        }
+        .links { order: 3; width: 100%; overflow-x: auto; padding-bottom: 6px; }
         .links a { white-space: nowrap; }
+        .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+      }
+      @media (max-width: 520px) {
+        .logo { font-size: 17px; }
+        .quick-contact { right: 10px; bottom: 12px; gap: 6px; }
+        .quick-contact a { min-width: 84px; padding: 8px 10px; font-size: 11px; }
       }
     </style>
   </head>
   <body>
     <header class="header">
-      <nav class="nav" aria-label="Main navigation">
+      <nav class="nav" aria-label={isVi ? 'Điều hướng chính' : 'ເມນູຫຼັກ'}>
         <a class="logo" href={homeUrl}>H&L MEDIA ACADEMY</a>
-
         <div class="links">
-          {menu.map(item => (
-            <a href={item.url}>{item.name}</a>
-          ))}
+          {menu.map(item => (<a href={item.url}>{item.name}</a>))}
         </div>
-
         <div class="language">
-          <a href={isVi ? pathname : switchUrl} class:list={{ active: isVi }} lang="vi">🇻🇳 VI</a>
-          <a href={isVi ? switchUrl : pathname} class:list={{ active: !isVi }} lang="lo">🇱🇦 LAO</a>
+          <a href={isVi ? pathname : switchUrl} class:list={{ active: isVi }} lang="vi" aria-current={isVi ? 'page' : undefined}>🇻🇳 VI</a>
+          <a href={isVi ? switchUrl : pathname} class:list={{ active: !isVi }} lang="lo" aria-current={!isVi ? 'page' : undefined}>🇱🇦 LAO</a>
         </div>
       </nav>
     </header>
 
-    <main>
-      <slot />
-    </main>
+    <main><slot /></main>
 
     <footer class="footer">
-      <strong>H&L Media Academy</strong>
-      <p>
-        {isVi
-          ? 'Đào tạo Facebook Ads & TikTok Ads thực chiến'
-          : 'ຝຶກອົບຮົມ Facebook Ads ແລະ TikTok Ads'}
-      </p>
-      <small>© {new Date().getFullYear()} H&L Media Academy</small>
+      <div class="footer-inner">
+        <div>
+          <strong class="footer-brand">H&L Media Academy</strong>
+          <p>{isVi ? 'Đào tạo Facebook Ads & TikTok Ads thực chiến' : 'ຝຶກອົບຮົມ Facebook Ads ແລະ TikTok Ads'}</p>
+        </div>
+        <div>
+          <h2 class="contact-title">{isVi ? 'Thông tin liên hệ' : 'ຂໍ້ມູນຕິດຕໍ່'}</h2>
+          <div class="contact-list">
+            <div><span class="contact-label">Email: </span><a href={`mailto:${contact.email}`}>{contact.email}</a></div>
+            <div><span class="contact-label">🇻🇳 {isVi ? 'Việt Nam' : 'ຫວຽດນາມ'}: </span><a href={`tel:${contact.vietnam}`}>{contact.vietnamDisplay}</a> · <a href={contact.zalo} target="_blank" rel="noopener noreferrer">Zalo</a> · <a href={contact.whatsappVietnam} target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+            <div><span class="contact-label">🇱🇦 {isVi ? 'Lào' : 'ລາວ'}: </span><a href={`tel:${contact.laos}`}>{contact.laosDisplay}</a> · <a href={contact.whatsappLaos} target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© {new Date().getFullYear()} H&L Media Academy</div>
     </footer>
+
+    <aside class="quick-contact" aria-label={isVi ? 'Liên hệ nhanh' : 'ຕິດຕໍ່ດ່ວນ'}>
+      <a class="call" href={`tel:${primaryPhone}`}>☎ {isVi ? 'Gọi ngay' : 'ໂທເລີຍ'}</a>
+      {isVi && <a class="zalo" href={contact.zalo} target="_blank" rel="noopener noreferrer">Zalo</a>}
+      <a class="whatsapp" href={primaryWhatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </aside>
   </body>
 </html>
